@@ -1,0 +1,94 @@
+# ========================
+# Compilados Java
+# ========================
+*.class
+
+# ========================
+# Logs
+# ========================
+*.log
+
+# ========================
+# Arquivos temporários
+# ========================
+*.tmp
+*.swp
+*.swo
+*~
+
+# ========================
+# Diretórios de build
+# ========================
+/bin/
+/build/
+/target/
+/out/
+
+# ========================
+# Maven
+# ========================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# ========================
+# Gradle
+# ========================
+.gradle/
+build/
+
+# ========================
+# IntelliJ IDEA
+# ========================
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ========================
+# Eclipse
+# ========================
+.project
+.classpath
+.settings/
+bin/
+
+# ========================
+# VS Code
+# ========================
+.vscode/
+
+# ========================
+# Sistema Operacional
+# ========================
+.DS_Store
+Thumbs.db
+
+# ========================
+# Arquivos de configuração local
+# ========================
+.env
+*.env
+
+# ========================
+# JAR/WAR gerados
+# ========================
+*.jar
+*.war
+*.ear
+
+# ========================
+# Arquivos de teste / cobertura
+# ========================
+/coverage/
+*.exec
+
+# ========================
+# Outros
+# ========================
+*.bak
+*.orig
