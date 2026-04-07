@@ -63,6 +63,21 @@ public class ContaBancaria {
 
     }
 
+    public void exibirExtrato() {
+        System.out.println("=========================================");
+        System.out.println(" Extrato - " + getTipoConta());
+        System.out.println("=========================================");
+        System.out.println(" Titular : " + titular);
+        System.out.println(" Agência : " + agencia);
+        System.out.println(" Conta: " + numeroConta);
+        System.out.printf(" Saldo : R$ %.2f%n", saldo);
+        System.out.println("=========================================");
+        
+    }
+
+    //Método abstrato para identificar o tipo da conta
+    public abstract String getTipoConta();
+
 
 
 
