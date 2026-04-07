@@ -38,6 +38,39 @@ public class ContaBancaria {
         return String.format("%05d-%d", (int)(Math.random() * 99999), (int)(Math.random() * 9));
     }
 
+    // Método abstrato - Cada tipo de conta tem sua própria lógica para sacar
+
+    //Sacar
+    public abstract void sacar(double valor);
+
+    
+    //Métodos concretos compartilhados
+
+    //Depositar
+    public void depositar(double valor){
+        if(valor <=0) {
+            throw new IllegalArgumentException("Valor do depósito deve ser positivo");
+        }
+        saldo += valor;
+        System.out.printf("[DEPOSITO] R$ %.2f depositado. Novo saldo: R$ %.2f%n", valor, saldo);
+    }
+
+    //Tranferir
+    public void transferir(double valor, ContaBancaria destino) {      // ContaBancaria destino, permite instancia de Conta bancaria para acessar sacar(), depositar()
+        this.sacar(valor);
+        destino.depositar(valor);
+        System.out.printf("[TRANSPARENCIA] R$ %.2f transferido para %s%n%", valor, saldo);
+
+    }
+
+
+
+
+
+
+
+
+
     
 
     
