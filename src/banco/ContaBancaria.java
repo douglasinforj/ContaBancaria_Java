@@ -100,6 +100,22 @@ public class ContaBancaria {
         this.titular = novoTitular;
     }
 
+    /**
+     * Sobrescrevendo método padrão de superclass do Sistema "toString"
+     * 
+     * Quando alguém imprimir esse objeto, mostre um resumo formatado e legível com os dados principais da conta.
+     */
+    @Override  //indica que vamos sobrescrever um método existente de uma classe pai (herança)
+    public String toString(){
+        return String.format("[%s] Tituar: %s | Agência: %s | Conta %s | Saldo: R$ %.2f",
+                getTipoConta(),
+                getTitular(),
+                getAgencia(),
+                getNumeroConta(),
+                getSaldo()
+        );
+    }
+
 
 
 
