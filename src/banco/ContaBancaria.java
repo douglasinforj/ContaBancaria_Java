@@ -79,6 +79,28 @@ public class ContaBancaria {
     public abstract String getTipoConta();
 
 
+    /** Encapsulamentos com Getters e Setters
+     * Dados (variáveis) de um objeto não devem ser acessados diretamente, só com regras que definimos
+     * Controke de acesso
+     * Evitar etados invalidos
+     * Evolução do código, podendo adicionar logica, como para validar
+    */
+
+    //Getters
+    public String getNumeroConta() { return numeroConta; }
+    public String getAgencia() { return agencia; }
+    public String getTitular() { return titular; }
+    public double getSaldo() { return saldo; }
+
+    //Setter com validação para Titular
+    public void setTitular(String novoTitular) {
+        if (novoTitular == null || novoTitular.isBlank()) {
+            throw new IllegalArgumentException("Titular inválido.");
+        }
+        this.titular = novoTitular;
+    }
+
+
 
 
 
