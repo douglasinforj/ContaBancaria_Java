@@ -65,9 +65,21 @@ public class ContaCorrente  extends ContaBancaria{
     public void exibirExtrato(){  //Metodo vindo por herança do pai,
         super.exibirExtrato();    //Chamando os comportamento na classe pai
         System.out.printf(" Limite Especial: ", limiteEspecial);   //Adicionando limiteEspcial que é especifica desta classe.
-
     }
 
+    //Getters e Setters
+
+    //Encapsular a variavel LimiteEspecial
+    public double getLimiteEspecial() { return limiteEspecial; }
+
+
+    //Ecapsulamento e metodo para alterar o valor do Limite Especial
+    public void setLimiteEspecial(double novoLimite){
+        if (novoLimite < 0){
+            throw new IllegalArgumentException("Limite não pode ser negativo.");
+        }
+        this.limiteEspecial = novoLimite;
+    }
 
 
 }
