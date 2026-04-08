@@ -31,5 +31,29 @@ public class ContaCorrente  extends ContaBancaria{
         this(titular, saldoInicial, 500.0);          //Limite padrão (limiteEspecial) 
     }
 
+    /**
+     * Método Abstract herdado de ContaBancaria, utilizaremos o @override para sobrescrever
+     * Saque com uso de cheque especial
+     * Cliente pode sacar até saldo + limiteEspecial
+     */
+
+    @Override
+    public void sacar(double valor){
+        if (valor <=0){
+            throw new IllegalArgumentException("Valor de saque deve ser positivo");
+        }
+        double saldoDisponivel = saldo + limiteEspecial;
+        if (valor > saldoDisponivel){
+            throw new IllegalStateException(
+                String.format("Saldo insuficiente. Disponível (com limite): R$ %.2f", saldoDisponivel)
+            );
+        }
+        saldo -= valor;
+        System.out.printf("[SAQUE CC] R$ %.2f sacado. Novo saldo: R$ %.2f%n", valor, saldo);
+        if(saldo < 0){
+            System.out.printf("[AVISO] Você está usando R$ %.2f do cheque especial.%n", Math.abs(saldo));
+        }
+    }
+
 
 }

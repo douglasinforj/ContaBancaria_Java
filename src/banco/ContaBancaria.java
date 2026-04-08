@@ -3,9 +3,10 @@ package banco;
 /*
    Classe Base que representa um conta bancaria genérica.
    Demonstrando: Encapsulamento, construtores, método de instancias
+   Deve ser declarada com abstract, por que obriga as filhas a implementarem metodos tido nelas como abstract também.
  */
 
-public class ContaBancaria {
+public abstract class ContaBancaria {
 
     // private - Acesso restritor a propria classe, não sendo acesso diretamente
     // Static - Pertence a classe não ao objeto, existe uma única cópia na memória, Todos os objetos compatilham o mesmo valor.
