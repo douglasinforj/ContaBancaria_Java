@@ -53,8 +53,21 @@ public class ContaCorrente  extends ContaBancaria{
         if(saldo < 0){
             System.out.printf("[AVISO] Você está usando R$ %.2f do cheque especial.%n", Math.abs(saldo));
         }
-        
+
     }
+
+    @Override
+    public String getTipoConta() {
+        return "CONTA CORRENTE";
+    }
+
+    @Override
+    public void exibirExtrato(){  //Metodo vindo por herança do pai,
+        super.exibirExtrato();    //Chamando os comportamento na classe pai
+        System.out.printf(" Limite Especial: ", limiteEspecial);   //Adicionando limiteEspcial que é especifica desta classe.
+
+    }
+
 
 
 }
