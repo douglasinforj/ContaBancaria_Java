@@ -54,6 +54,15 @@ class TributavelTest {                            //Nome da classe que quero tes
         assertEquals(0.0, t.calcularImposto());
     }
 
+    @Test
+    @DisplayName("calcularImposto() deve escalar proporcionalmente ao saldo")   //se o saldo dobra -> o imposto deve dobrar
+    void impostoDeveEscalarComSaldo(){
+        Tributavel t1 = criarTributavel(1000.0);       //objetos criado e recebendo os valores para teste
+        Tributavel t2 = criarTributavel(2000.0);
+        assertEquals(t1.calcularImposto() * 2, t2.calcularImposto(), 0.001); 
+        //t2 tem que ser o dobro de imposto de t1. para comparar multipliquei t1 x2, para darem iguais.
+    }
+
 
 
 }
