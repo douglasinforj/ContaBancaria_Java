@@ -11,7 +11,7 @@ public interface Tributavel {
 
     double calcularImposto();
 
-    default String descricaoTribut0(){
+    default String descricaoTributo(){
         return String.format("IOF calculado: R$ %.2f (alíquota: %.2f%%)", calcularImposto(), ALIQUOTA_IOF * 100);
     }
 }
