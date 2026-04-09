@@ -63,6 +63,32 @@ class TributavelTest {                            //Nome da classe que quero tes
         //t2 tem que ser o dobro de imposto de t1. para comparar multipliquei t1 x2, para darem iguais.
     }
 
+    // -----3 - Testando método descricaoTributo()
+
+    @Test
+    @DisplayName("descricaoTributo() não pode ser nulo nem vazio")
+    void descricaoNaoDeveSerVazia(){
+        Tributavel t = criarTributavel(500);
+        String descricao = t.descricaoTributo();     //Recebe a descrição
+        assertNotNull(descricao);                   //verifica se esta null
+        assertFalse(descricao.isBlank());           //verifica se esta em branco
+    }
+
+    @Test
+    @DisplayName("descricaoTributo() deve conter o valor do imposto calculado")
+    void descricaoDeveConterValorDoImporto(){
+        Tributavel t = criarTributavel(1000);
+        //imposto = 1000 * 0.0038 = 3.80
+        assertTrue(t.descricaoTributo().contains("3,80") || t.descricaoTributo().contains("3.80")); //com , ou .
+    }
+
+    @Test
+    @DisplayName("descricaoTributo() deve mencionar a alíquota")
+    void descricaoDeveMencionarAliquota(){
+        Tributavel t = criarTributavel(1000.0);
+        assertTrue(t.descricaoTributo().contains("0,38") || t.descricaoTributo().contains("3.80"));  //com , ou .
+    }
+
 
 
 }
