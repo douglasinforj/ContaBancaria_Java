@@ -82,7 +82,7 @@ class ContaBancariaTest {
         assertEquals(0.0, c.getSaldo());
     }
 
-// Teste 2 ---depositar()-------------------------------------
+    // Teste 2 ---depositar()-------------------------------------
 
     @Test
     @DisplayName("Deve depositar e atualizar saldo Corretamente")
@@ -111,7 +111,29 @@ class ContaBancariaTest {
     void depositosAcumuladosDevemSomar() {
         conta.depositar(200.0);
         conta.depositar(300.0);
-        assertEquals(1500, conta.getSaldo());
+        assertEquals(1500, conta.getSaldo());   //onde saldo inicial era de 1000.0
+    }
+
+    //Teste 3 - ---transferir-------------------------------
+
+    @Test
+    @DisplayName("Deve transferir valor entre contas corretamente")
+    void deveTransferirEntreContas() {
+        ContaCorrente destino = new ContaCorrente("Maria", 500.0);
+        conta.transferir(300, destino);   //conta esta com saldo inicial de 1000, transferiu para destino "Maria"
+        assertEquals(700, conta.getSaldo());     // saldo da conta 1000 - 300 = 700
+        assertEquals(800.0, destino.getSaldo());  // saldo do dstino "Maria"   500 + 300 = 800
+    }
+
+    @Test
+    @DisplayName("Transferencia deve lançar exceção se saldo insuficiente")
+    void deveLancarExcecaoSeSaldoInsuficienteNaTransferencia() {
+        ContaCorrente destino = new ContaCorrente("Maria", 0.0);
+        // Saldo = 1000, limite = 500 (padrão) -> máximo = 1500
+        // Tentando 2000 -> deve falhar
+        assertThrows(IllegalStateException.class, 
+            () -> conta.transferir(2000.0, destino)
+        );
     }
 
 
