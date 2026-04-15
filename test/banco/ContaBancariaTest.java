@@ -162,7 +162,20 @@ class ContaBancariaTest {
         );
     }
 
+
+    // Teste 5 - função toString()
+
+    @Test
+    @DisplayName("toString() deve conter o nome do titular")
+    void toStringDeveConterTitular() {
+        assertTrue(conta.toString().contains("João Teste"));
+    }
     
+    @Test
+    @DisplayName("toString() deve conter o saldo")
+    void toStringDeveConterSaldo(){
+        assertTrue(conta.toString().contains("1000"));
+    }
 
 
 
