@@ -137,6 +137,33 @@ class ContaBancariaTest {
     }
 
 
+    //Teste 4 - ---setTitular()
+
+    @Test
+    @DisplayName("Deve atualizar titular com valor válido")
+    void deveAtualizarTitular() {
+        conta.setTitular("Carlos Novo");
+        assertEquals("Carlos Novo", conta.getTitular());
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção ao setar titular nulo")
+    void deveLancarExcecaoAoSetarTitularNulo() {
+        assertThrows(IllegalArgumentException.class,
+            () -> conta.setTitular(null)
+        );
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção ao setar titular em branco")
+    void deveLancarExcecaoAoSetarTitularEmBranco() {
+        assertThrows(IllegalArgumentException.class,
+            () -> conta.setTitular("")
+        );
+    }
+
+    
+
 
 
 
