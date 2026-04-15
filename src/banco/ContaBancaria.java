@@ -60,7 +60,7 @@ public abstract class ContaBancaria {
     public void transferir(double valor, ContaBancaria destino) {      // ContaBancaria destino, permite instancia de Conta bancaria para acessar sacar(), depositar()
         this.sacar(valor);
         destino.depositar(valor);
-        System.out.printf("[TRANSPARENCIA] R$ %.2f transferido para %s%n%", valor, saldo);
+        System.out.printf("[TRANSPARENCIA] R$ %.2f transferido para %s%n", valor, saldo);
 
     }
 
