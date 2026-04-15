@@ -84,7 +84,35 @@ class ContaBancariaTest {
 
 // Teste 2 ---depositar()-------------------------------------
 
+    @Test
+    @DisplayName("Deve depositar e atualizar saldo Corretamente")
+    void deveDepositarCorretamente(){
+        conta.depositar(500.0);
+        assertEquals(1500.0, conta.getSaldo());     //Esperado 1500 - buscando saldo, verificando o somatorio de 1000 (inicial) + 500 depositado
+    }
 
+    @Test
+    @DisplayName("Deve lançar exceção para depósito zero")
+    void deveLancarExcecaoParaDepositoZero() {
+        assertThrows(IllegalArgumentException.class, 
+            () -> conta.depositar(0));
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção para deposito negativo")
+    void deveLancarExcecaoParaDepositoNegativo() {
+        assertThrows(IllegalArgumentException.class,
+            () -> conta.depositar(-100.0)
+        );
+    }
+
+    @Test
+    @DisplayName("Depósito acumulados devem somar corretamente")
+    void depositosAcumuladosDevemSomar() {
+        conta.depositar(200.0);
+        conta.depositar(300.0);
+        assertEquals(1500, conta.getSaldo());
+    }
 
 
 
