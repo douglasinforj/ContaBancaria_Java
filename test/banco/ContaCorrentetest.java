@@ -154,6 +154,14 @@ public class ContaCorrentetest {
         );
     }
 
+    // -- 6 getTipoConta()
+
+    @Test
+    @DisplayName("getTipoConta() deve retornar CONTA CORRENTE")
+    void deveRetornarTipoContaCorrente() {
+        assertEquals("CONTA CORRENTE", conta.getTipoConta());
+    }
+
 
 
 }
