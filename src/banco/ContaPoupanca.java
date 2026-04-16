@@ -20,6 +20,30 @@ public class ContaPoupanca extends ContaBancaria {
      * Saque com limite de quantidade mensal (regra simplificada de poupança)
      */
 
+    @Override
+    public void sacar(double valor){
+        if (valor <= 0){
+            throw new IllegalArgumentException("Valor de saque deve ser positivo");
+        }
+        if (saquesMensais >= LIMITE_SAQUES_MENSAIS){
+            throw new IllegalStateException(
+                "Limite de " + LIMITE_SAQUES_MENSAIS + " saques mensais atingidos"
+            );
+        }
+        if (valor > saldo){
+            throw new IllegalStateException(
+                String.format("Saldo insuficiente. Saldo atual: R$ %.2f", saldo)
+            );
+        }
+        saldo -= valor;
+        saquesMensais++;
+        System.out.printf("[SAQUES CP] R$ %.2f sacado. Saldo: R$ %.2f | Saques este mês: %d/%d%n",
+            valor, saldo, saquesMensais, LIMITE_SAQUES_MENSAIS
+        );
+
+        
+    }
+
 
 
 
