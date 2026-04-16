@@ -130,4 +130,30 @@ public class ContaCorrentetest {
         assertEquals(-500, conta.getSaldo(), 0.001);
     }
 
+    // ---teste 5 - setLimiteEspecial - atualização de limite
+
+    @Test
+    @DisplayName("Deve Atualizar limite especial com valor válido")
+    void deveAtualizarLimiteEspecial() {
+        conta.setLimiteEspecial(1000);
+        assertEquals(1000, conta.getSaldo());
+    }
+
+    @Test
+    @DisplayName("Deve aceitar limite especial zero")
+    void deveAceitarLimiteZero() {
+        conta.setLimiteEspecial(0.0);
+        assertEquals(0.0, conta.getLimiteEspecial());
+    }
+
+    @Test
+    @DisplayName("Deve lançar excecao ao setar limite negativo")
+    void deveLancarExcecaoParaLimiteNegativoNoSetter() {
+        assertThrows(IllegalArgumentException.class,
+            () -> conta.setLimiteEspecial(-100.0)
+        );
+    }
+
+
+
 }
