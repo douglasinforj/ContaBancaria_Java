@@ -67,6 +67,9 @@ public class ContaPoupanca extends ContaBancaria {
             System.out.println("========================================================");
         }
 
+        //getters (encapsulamento)
+        public int getSaquesMensais() { return saquesMensais; }
+
 
 
 }
