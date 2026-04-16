@@ -1,0 +1,71 @@
+package banco;
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.*;
+
+
+/**
+ * Teste de Conta Corrente
+ * 
+ * Aqui testamos somente o que é especifico de ContaCorrente:
+ * - sacar() com ou sem cheque especial
+ * -limite especial (getter/setter)
+ * -construtor com e sem limite customizado
+ * 
+ */
+
+@DisplayName("ContaCorrente - teste especifico da classe")
+public class ContaCorrentetest {
+
+    private ContaCorrente conta;
+
+    @BeforeEach
+    void setUP() {
+        // saldo: 1000.0 , limite especial padrão na classe: 500.0
+        conta = new ContaCorrente("Ana Teste", 1000.0);
+    }
+
+    //--Teste 1 Contrutores---------------------
+
+    @Test
+    @DisplayName("Construtor padrão deve definir limite especial de 500")
+    void construtorPadraoDefinirLimite500() {
+        assertEquals(500.0, conta.getLimiteEspecial());  //verificando limite padrão
+    }
+
+    @Test
+    @DisplayName("Construtor com limite customizado deve respeita-lo")
+    void construtorCustomDeveDefinirLimiteCorreto() {
+        ContaCorrente c = new ContaCorrente("Pedro", 2000.0,1500.0); //customizando o limite
+        assertEquals(1500.0, c.getLimiteEspecial());
+    }
+
+    @Test
+    @DisplayName("Deve lançar excessao para limite especial negativo")
+    void deveLancarExcecaoParaLimiteNegativo() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new ContaCorrente("Pedro", 1000.0,-1.0)
+        );
+    }
+
+
+    // ---teste 2 - Sacar() dentro do saldo
+
+    @Test
+    @DisplayName("Saque dentro do saldo")
+    void saqueDentroDoSaldoDeveReduzirSaldo() {
+        conta.sacar(400.0);
+        assertEquals(600.0, conta.getSaldo());
+    }
+
+    @Test
+    @DisplayName("Saque do valor exato do saldo deve zerar a conta")
+    void saqueDoSaldoDeveZerarConta() {
+        conta.sacar(1000.0);
+        assertEquals(0.0, conta.getSaldo());
+    }
+
+}

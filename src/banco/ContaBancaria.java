@@ -93,6 +93,7 @@ public abstract class ContaBancaria {
     public String getTitular() { return titular; }
     public double getSaldo() { return saldo; }
 
+
     //Setter com validação para Titular
     public void setTitular(String novoTitular) {
         if (novoTitular == null || novoTitular.isBlank()) {
