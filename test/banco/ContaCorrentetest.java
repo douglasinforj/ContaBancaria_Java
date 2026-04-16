@@ -110,4 +110,24 @@ public class ContaCorrentetest {
         );
     }
 
+
+    // -- teste 4 - Saque múltiplo ---------------------------
+
+    @Test
+    @DisplayName("Saque sequenciais devem acumular corretamente")
+    void saquesSequenciaisDevemAcumular() {
+        conta.sacar(300.0);
+        conta.sacar(300.0);
+        conta.sacar(300.0);
+        assertEquals(100.0, conta.getSaldo());
+    }
+
+    @Test
+    @DisplayName("Segundo saque além do saldo deve verificar limite restante")
+    void segundoSaqueDeveVerificarLimiteRestante() {
+        conta.sacar(1000.0);   //zera saldo, ainda resta 500 do limite especial
+        conta.sacar(500.0);    //usa o limite especial
+        assertEquals(-500, conta.getSaldo(), 0.001);
+    }
+
 }
