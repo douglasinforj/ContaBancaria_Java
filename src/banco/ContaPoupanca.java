@@ -40,13 +40,18 @@ public class ContaPoupanca extends ContaBancaria {
         System.out.printf("[SAQUES CP] R$ %.2f sacado. Saldo: R$ %.2f | Saques este mês: %d/%d%n",
             valor, saldo, saquesMensais, LIMITE_SAQUES_MENSAIS
         );
-
-        
     }
 
 
-
-
-
+     /**
+         * Aplica rendimentos mensal ao saldo
+         * 
+         */
+        public void aplicarRendimento() {
+            double rendimento = saldo * TAXA_RENDIMENTO;
+            saldo += rendimento;
+            saquesMensais = 0;      //reset mensal
+            System.out.printf("[RENDIMENTO] R$ %.2f creditados. Novo saldo: R$ %.2f%n", rendimento, saldo);
+        }
 
 }
