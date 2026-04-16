@@ -43,32 +43,32 @@ public class ContaPoupanca extends ContaBancaria {
     }
 
 
-     /**
-         * Aplica rendimentos mensal ao saldo
-         * 
-         */
-        public void aplicarRendimento() {
-            double rendimento = saldo * TAXA_RENDIMENTO;
-            saldo += rendimento;
-            saquesMensais = 0;      //reset mensal
-            System.out.printf("[RENDIMENTO] R$ %.2f creditados. Novo saldo: R$ %.2f%n", rendimento, saldo);
-        }
+    /**
+     * Aplica rendimentos mensal ao saldo
+     * 
+     */
+    public void aplicarRendimento() {
+        double rendimento = saldo * TAXA_RENDIMENTO;
+        saldo += rendimento;
+        saquesMensais = 0;      //reset mensal
+        System.out.printf("[RENDIMENTO] R$ %.2f creditados. Novo saldo: R$ %.2f%n", rendimento, saldo);
+    }
 
-        @Override
-        public String getTipoConta() {
-            return "CONTA PUPANÇA";
-        }
+    @Override
+    public String getTipoConta() {
+        return "CONTA PUPANÇA";
+    }
 
-        @Override
-        public void exibirExtrato() {
-            super.exibirExtrato();       //exibi o comportamento do método direto da classe pai
-            System.out.printf(" Taxa de Rendimento: %.1%% a.m.%.", TAXA_RENDIMENTO * 100);
-            System.out.printf(" Saques este mês   : %d%d%n", saquesMensais, LIMITE_SAQUES_MENSAIS);
-            System.out.println("========================================================");
-        }
+    @Override
+    public void exibirExtrato() {
+        super.exibirExtrato();       //exibi o comportamento do método direto da classe pai
+        System.out.printf(" Taxa de Rendimento: %.1%% a.m.%.", TAXA_RENDIMENTO * 100);
+        System.out.printf(" Saques este mês   : %d%d%n", saquesMensais, LIMITE_SAQUES_MENSAIS);
+        System.out.println("========================================================");
+    }
 
-        //getters (encapsulamento)
-        public int getSaquesMensais() { return saquesMensais; }
+    //getters (encapsulamento)
+    public int getSaquesMensais() { return saquesMensais; }
 
 
 
