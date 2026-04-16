@@ -68,4 +68,46 @@ public class ContaCorrentetest {
         assertEquals(0.0, conta.getSaldo());
     }
 
+    //---teste 3 - sacar() - uso do cheque especial
+    
+    @Test
+    @DisplayName("Saque além do saldo deve usar cheque especial")
+    void saqueAlemSaldoDeveUsarChequeEspecial() {
+        // saldo 1000 + limite 500 = 1500
+        conta.sacar(1200.0);
+        assertEquals(-200.00, conta.getSaldo(), 0.001);
+    }
+
+    @Test
+    @DisplayName("Saque até o limite máximo (saldo + limite) deve funcionar")
+    void saqueAteOLimiteMaximoDeveFuncionar() {
+        conta.sacar(1500);    //saldo 1000 + limite especial 500
+        assertEquals(-500.00, conta.getSaldo());
+    }
+
+    @Test
+    @DisplayName("Saque acima do limite máximo deve lançar a exceção")
+    void saqueAcimaDoLimiteMaximoDeveLancarExcecao() {
+        //maximo disponivel = 1500, tentando 1501
+        assertThrows(IllegalStateException.class,     //testa se esta violando os estado atual do sistema, onde tem um limite de saque definido
+            () -> conta.sacar(1501.0)
+        );
+    }
+
+    @Test
+    @DisplayName("Saque com valor zero deve lançar exceção")
+    void saqueComValorZeroDeveLancarExcecao() {
+        assertThrows(IllegalArgumentException.class,
+            () -> conta.sacar(0)
+        );
+    }
+
+    @Test
+    @DisplayName("Saque com valor negativo deve lançar exceção")
+    void saqueComValorNegativoDeveLancarExcecao () {
+        assertThrows(IllegalArgumentException.class,
+            () -> conta.sacar(-50.0)
+        );
+    }
+
 }
