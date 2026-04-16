@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 @DisplayName("ContaCorrente - teste especifico da classe")
-public class ContaCorrentetest {
+public class ContaCorrenteTest {
 
     private ContaCorrente conta;
 
