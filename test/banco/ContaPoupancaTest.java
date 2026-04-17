@@ -123,5 +123,43 @@ public class ContaPoupancaTest {
         assertEquals(1000, conta.getSaldo());
     }
 
+    // - teste 4 -----aplicarRendimento()-----------------
+
+    @Test
+    @DisplayName("Rendimento deve aumentar o saldo em 0,5%")
+    void rendimentoDeveAumentarSaldo() {
+        conta.aplicarRendimento();                          //aplica o rendimento no saldo de 1000.0
+        assertEquals(1005.0, conta.getSaldo(), 0.001);
+    }
+
+    @Test
+    @DisplayName("Contador deve resetar contador de saques para zero")
+    void rendimentoDeveResetarContadorDeSaques() {
+        conta.sacar(100.0);
+        conta.sacar(100.0);
+        conta.aplicarRendimento();
+        assertEquals(0, conta.getSaquesMensais());   //verifica se zerou os saques
+    }
+
+    @Test
+    @DisplayName("Após reset do rendimento deve permitir 4 saques novamente")
+    void aposRendimentoDevePermitir4SaquesNovamente() {
+        conta.sacar(100.0);
+        conta.sacar(100.0);
+        conta.sacar(100.0);
+        conta.sacar(100.0);
+        conta.aplicarRendimento();       //reset do contador
+        assertDoesNotThrow(             //garante que este trecho não lança excessao, ou seja testa se o codigo não esta lancando excecao, pois resetou
+            () -> conta.sacar(100.0)
+        );
+    }
+
+    @Test
+    @DisplayName("Rendimentos acumulados devem crescer sobre saldo atualizado")
+    void rendimentosAcumuladosDevemCrescerSobreSaldoAtualizado() {
+        conta.aplicarRendimento();   //saldo 1000 -> 1005
+        conta.aplicarRendimento();   //saldo 1005 -> 1010.025
+        assertTrue(conta.getSaldo() > 1005.0);   //verifica se é verdade ser houve acumulo de rendimentos
+    }
 
 }
