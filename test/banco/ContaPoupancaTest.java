@@ -162,4 +162,12 @@ public class ContaPoupancaTest {
         assertTrue(conta.getSaldo() > 1005.0);   //verifica se é verdade ser houve acumulo de rendimentos
     }
 
+    // - teste 5 - getTipoConta() -----------------------------------------
+
+    @Test
+    @DisplayName("getTipoConta() deve retornar CONTA POUPANCA")
+    void deveRetornarTipoConta () {
+        assertEquals("CONTA POUPANCA", conta.getTipoConta());
+    }
+
 }
