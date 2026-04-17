@@ -41,4 +41,38 @@ public class ContaPoupancaTest {
     }
 
 
+    // teste 2 - sacar()
+
+    @Test
+    @DisplayName("Saque válido deve reduzir saldo corretamente")
+    void saqueValidoDeveReduzirSaldo() {
+        conta.sacar(300.0);
+        assertEquals(700.0, conta.getSaldo());
+    }
+
+    @Test
+    @DisplayName("Saque deve incrementar contador saques mensais")
+    void saqueDeveIncrementarContatos () {
+        conta.sacar(100.0);
+        assertEquals(1, conta.getSaquesMensais());
+    }
+
+    @Test
+    @DisplayName("Deve permitir até 4 saques mensais")
+    void devePermitirAte4SaquesMensair() {
+        conta.sacar(100.0);
+        conta.sacar(100.0);
+        conta.sacar(100.0);
+        conta.sacar(100.0);
+        assertEquals(600, conta.getSaldo());
+    }
+
+    @Test
+    @DisplayName("Saque do valor exato do saldo deve zerar conta")
+    void saqueExatoDeveZerarSaldo() {
+        conta.sacar(1000.0);
+        assertEquals(0, conta.getSaldo());
+    }
+
+
 }
