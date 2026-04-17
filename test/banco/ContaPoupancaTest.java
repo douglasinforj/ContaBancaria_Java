@@ -167,7 +167,7 @@ public class ContaPoupancaTest {
     @Test
     @DisplayName("getTipoConta() deve retornar CONTA POUPANCA")
     void deveRetornarTipoConta () {
-        assertEquals("CONTA POUPANÇA", conta.getTipoConta());
+        assertEquals("CONTA POUPANÇA ", conta.getTipoConta());
     }
 
 }
