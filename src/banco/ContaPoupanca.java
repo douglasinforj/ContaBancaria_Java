@@ -56,7 +56,7 @@ public class ContaPoupanca extends ContaBancaria {
 
     @Override
     public String getTipoConta() {
-        return "CONTA PUPANÇA";
+        return "CONTA POUPANÇA";
     }
 
     @Override
