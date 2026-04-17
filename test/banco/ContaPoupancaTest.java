@@ -74,5 +74,54 @@ public class ContaPoupancaTest {
         assertEquals(0, conta.getSaldo());
     }
 
+    // Teste 3 - Sacar() - Exceções -------------------------------------
+
+    @Test
+    @DisplayName("Quinto saque no mês deve lançar excessao")
+    void quitoSaqueDeveLancarExcecao() {
+        conta.sacar(100.0);
+        conta.sacar(100.0);
+        conta.sacar(100.0);
+        conta.sacar(100.0);
+        assertThrows(IllegalStateException.class,
+            () -> conta.sacar(100.0)
+        );
+    }
+
+    @Test
+    @DisplayName("Saque acima do saldo deve lançar excecao")
+    void saqueAcimaSaldoDeveLancarExcessao () {
+        assertThrows(IllegalStateException.class,
+            () -> conta.sacar(1500.0)
+        );
+    }
+
+    @Test
+    @DisplayName("Saque com valor zero deve lançar excessao")
+    void saqueZeroDeveLancarExcecao () {
+        assertThrows(IllegalArgumentException.class, 
+            () -> conta.sacar(0)
+        );
+    }
+
+    @Test
+    @DisplayName("Saque com valor negativo deve lançar excessao")
+    void saqueNegativoDeveLancarExcecao () {
+        assertThrows(IllegalArgumentException.class,
+            () -> conta.sacar(-50.0)
+        );
+    }
+
+    @Test
+    @DisplayName("Saldo não deve ser alterado após excecao de saque inválido")
+    void saldoNaoDeveAlterarAposExcecao () {
+        try { 
+            conta.sacar(9999.0);
+        } catch (IllegalStateException ignored){
+        
+        }
+        assertEquals(1000, conta.getSaldo());
+    }
+
 
 }
