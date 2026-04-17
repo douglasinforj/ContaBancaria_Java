@@ -35,9 +35,9 @@ public class ContaPoupancaTest {
     }
 
     @Test
-    @DisplayName("Deve Criar Conta Con saldo Inicial correto")
+    @DisplayName("Deve Criar Conta Com saldo Inicial correto")
     void deveCriarContaComSaldoCorreto() {
-        assertEquals(1000.0, 0);
+        assertEquals(1000.0, conta.getSaldo());
     }
 
 
