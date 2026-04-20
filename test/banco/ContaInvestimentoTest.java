@@ -130,6 +130,15 @@ public class ContaInvestimentoTest {
     }
 
 
+    // ---6 getTipoConta ------------------------------------
+
+    @Test
+    @DisplayName("getTipoConta() deve retornar CONTA INVESTIMENTO")
+    void deveRetornarTipoContaInvestimento() {
+        assertEquals("CONTA INVESTIMENTO", conta.getTipoConta());
+    }
+
+
 
 
 
