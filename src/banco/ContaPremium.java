@@ -34,6 +34,20 @@ public class ContaPremium extends ContaBancaria implements Tributavel{
 
     }
 
+    @Override
+    public String getTipoConta(){
+        return "CONTA PREMIUM";
+    }
+
+    @Override
+    public void exibirExtrato(){
+        super.exibirExtrato();
+        System.out.println("============Dados Premium");
+        System.out.println("  " + descricaoTributo());        //interface Tributavel
+        System.out.printf("  Último bônus:    + R$ %.2f%n", bonusAnual);
+        System.out.println("===============================================");
+    }
+
 
 
 }
