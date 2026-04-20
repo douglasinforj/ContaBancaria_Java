@@ -61,5 +61,22 @@ public class ContaPremiumTest {
         assertEquals(9.5, conta.calcularImposto());
     }
 
+    // ---teste 3 ----Tributavel --descricaoTributo()-----------------
+
+    @Test
+    @DisplayName("descricaoTributo() não deve ser nulo e nem vazio")
+    void descricaoNaoDeveSerVazia() {
+        assertNotNull(conta.descricaoTributo());
+        assertNotNull(conta.descricaoTributo().isBlank());
+    }
+
+    @Test
+    @DisplayName("descricaoTributo() deve conter o valor do imposto")
+    void deveConterValorDoImposto() {
+        //importo = 5000 * 0.0038 = 19.0
+        assertTrue(conta.descricaoTributo().contains("19,00") 
+        || conta.descricaoTributo().contains("19.00"));
+    }
+
 
 }
