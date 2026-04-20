@@ -62,5 +62,17 @@ public class ContaInvestimento extends ContaBancaria {
         return saldo * Math.pow(1 + taxaLiquida, meses);
     }
 
+    @Override
+    public String getTipoConta(){
+        return "CONTA INVESTIMENTO";
+    }
 
+    @Override
+    public void exibirExtrato() {
+        super.exibirExtrato();
+        System.out.printf(" Rentabilidade   : %.2f%% a.a%n",rentabilidadeAnual);
+        System.out.printf(" Taxa de Admn: %.2f%% a.a%n", taxaAdministracao);
+        System.out.printf(" Projeção 12 meses: R$: %.2f%n", projetarSaldo(12));
+        System.out.println("=============================================");
+    }
 }
