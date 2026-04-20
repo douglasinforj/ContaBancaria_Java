@@ -83,6 +83,35 @@ public class ContaInvestimentoTest {
         assertEquals(1000.0, conta.getSaldo());
     }
 
+    // teste 4 - processarMes()-----------------------------
+
+    @Test
+    @DisplayName("processarMes() deve aumentar saldo")
+    void processarMesDeveAumentarSaldo() {
+        double saldoAntes = conta.getSaldo();
+        conta.processarMes();
+        assertTrue(conta.getSaldo() > saldoAntes);
+    }
+
+    @Test
+    @DisplayName("processarMes() deve aplicar rentabilidade menos taxa ")
+    void processarMesDeveAplicarTaxaLiquida () {
+        //rentabilidade mensal  = 12/12/100 = 0.01 -> R$10.0
+        //taxa mensal = 1.5/12/100 = 0.00125 -> R$ 1.25
+        // 10.0 - 1.25
+        // líquido = R$ 8.75 -> saldo = 1008.75
+        conta.processarMes();
+        assertEquals(1008.75, conta.getSaldo(), 0.001);
+    }
+
+    @Test
+    @DisplayName("Meses Acumulados devem crescer sobre saldo atualizado")
+    void mesesAcumuladosDevemCrescerSobreSaldoAtualizado () {
+        conta.processarMes();
+        double saldoApos1Mes = conta.getSaldo();
+        conta.processarMes();
+        assertTrue(conta.getSaldo() > saldoApos1Mes);
+    } 
 
 
 
