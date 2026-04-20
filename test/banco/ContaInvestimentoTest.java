@@ -113,6 +113,21 @@ public class ContaInvestimentoTest {
         assertTrue(conta.getSaldo() > saldoApos1Mes);
     } 
 
+    // test 5 -----ProjetarSaldo() ----verificação de valores futuros
+
+    @Test
+    @DisplayName("Projecao para 0 mes deve retornar saldo atual")
+    void projecaoZeroMesesDeveRetornarSaldoAtual() {
+        assertEquals(conta.getSaldo(), conta.projetarSaldo(0), 0.001);
+    }
+
+    @Test
+    @DisplayName("Projeção para 12 meses deve ser aproximadamente R$ 1.110,16")
+    void projecao12MesesDeveSerAproximadamenteCorreto() {
+        // taxa líquida mensal = (12 - 1.5) / 12 / 100 = 0.00875
+        // 1000 * (1.00875)^12 ≈ 1110.16
+        assertEquals(1110.16, conta.projetarSaldo(12), 1.0);
+    }
 
 
 
