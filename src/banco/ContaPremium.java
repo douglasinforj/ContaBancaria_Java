@@ -7,7 +7,7 @@ package banco;
  *  - Composição de funcionalidade
  */
 
-public class ContaPremium {
+public class ContaPremium extends ContaBancaria implements Tributavel{
 
     private double bonusAnual;
 
@@ -16,5 +16,5 @@ public class ContaPremium {
         this.bonusAnual = 0;
     }
 
-    
+
 }
