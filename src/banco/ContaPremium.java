@@ -11,7 +11,7 @@ public class ContaPremium extends ContaBancaria implements Tributavel{
 
     private double bonusAnual;
 
-    public ContaPremium(String titula, double saldoInicial) {
+    public ContaPremium(String titulo, double saldoInicial) {
         super(titulo, saldoInicial);
         this.bonusAnual = 0;
     }
