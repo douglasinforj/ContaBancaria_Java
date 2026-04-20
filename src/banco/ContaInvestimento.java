@@ -38,5 +38,19 @@ public class ContaInvestimento extends ContaBancaria {
         System.out.printf("[SAQUE CI] R$ %.2f sacado. Saldo restante: R$ %.2f%n",valor, saldo);
     }
 
+    /**
+     * Simula a rentabilidade mensal descontado a taxa de administração.
+     */
+    public void processarMes(){
+        double rentMensal = rentabilidadeAnual / 12.0 / 100.0;
+        double taxaMensal = taxaAdministracao / 12.0 / 100.0;
+        double ganho = saldo * rentMensal;
+        double taxa = saldo * taxaMensal;
+        double liquido = ganho - taxa;
+        saldo += liquido;
+        System.out.printf("[INVESTIMENTO] Rentabilidade: +R$%.2f | Taxa adm: -R$ %.2f | Líquido: R$ %.2f", ganho, taxa, liquido );
+        System.out.printf("Novo saldo R$ %.2f", saldo);
+    }
+
 
 }
