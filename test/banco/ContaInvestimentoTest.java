@@ -43,6 +43,13 @@ public class ContaInvestimentoTest {
         assertEquals(500.0, conta.getSaldo());
     }
 
+    @Test
+    @DisplayName("Saque deixando exatamente R$ 100 deve funcionar")
+    void saqueDeixandoSaldoMinimoDeveFuncionar() {
+        conta.sacar(900.0);
+        assertEquals(100, conta.getSaldo(), 0.001);
+    }
+
 
 
 }
