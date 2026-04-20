@@ -52,5 +52,15 @@ public class ContaInvestimento extends ContaBancaria {
         System.out.printf("Novo saldo R$ %.2f", saldo);
     }
 
+    /**
+     * Projetar o saldo após N Meses
+     */
+    public double projetarSaldo(int meses) {
+        double rentMensal = rentabilidadeAnual / 12.0 / 100.0;
+        double taxaMensal = taxaAdministracao / 12.0 / 100.0;
+        double taxaLiquida = rentMensal - taxaMensal;
+        return saldo * Math.pow(1 + taxaLiquida, meses);
+    }
+
 
 }
