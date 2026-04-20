@@ -5,9 +5,10 @@ package banco;
  *  Demonstra:
  *  - Herança multipla de comportamento via Interface
  *  - Composição de funcionalidade
+ *  - OBS.: Esta conta é originári da conta corrente ou seja contaCorrente com elevação de Premium
  */
 
-public class ContaPremium extends ContaCorrente implements Tributavel{
+public class ContaPremium extends ContaCorrente implements Tributavel{     //Atenção a Herança
 
     private double bonusAnual;
 
@@ -41,7 +42,7 @@ public class ContaPremium extends ContaCorrente implements Tributavel{
 
     @Override
     public void exibirExtrato(){
-        super.exibirExtrato();
+        super.exibirExtrato();    //Herdado os dados de Conta Corrente(Atenção)
         System.out.println("============Dados Premium");
         System.out.println("  " + descricaoTributo());        //interface Tributavel
         System.out.printf("  Último bônus:    + R$ %.2f%n", bonusAnual);
