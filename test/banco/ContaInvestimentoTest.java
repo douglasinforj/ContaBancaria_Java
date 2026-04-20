@@ -50,6 +50,44 @@ public class ContaInvestimentoTest {
         assertEquals(100, conta.getSaldo(), 0.001);
     }
 
+    // teste 3 - Saca() - Exceções
+
+    @Test
+    @DisplayName("Saque que deixaria saldo abaixo de R$100 deve lançar exceção")
+    void saqueAbaixoDoSaldoMinimoDeveLancarExcecao() {
+        assertThrows(IllegalStateException.class,
+            () -> conta.sacar(1500.0)
+        );
+    }
+
+    @Test
+    @DisplayName("Saque com valor zero deve lançar exceção")
+    void saqueZeroDeveLancarExcecao() {
+        assertThrows(IllegalArgumentException.class,
+            () -> conta.sacar(0)
+        );
+    }
+
+    @Test
+    @DisplayName("Saque com valor negativo deve lançar exceção")
+    void saqueNegativoDeveLancarExcecao() {
+        assertThrows(IllegalArgumentException.class,
+            () -> conta.sacar(-100)
+        );
+    }
+
+    @Test
+    @DisplayName("Saldo não deve ser alterado após exceção de saque inválido")
+    void saqueNaoDeveAlterarAposExcecao () {
+        try { conta.sacar(950.0);} catch (IllegalStateException ignored) {}
+        assertEquals(1000.0, conta.getSaldo());
+    }
+
+
+
+
+
+
 
 
 }
