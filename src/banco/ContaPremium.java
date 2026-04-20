@@ -7,7 +7,7 @@ package banco;
  *  - Composição de funcionalidade
  */
 
-public class ContaPremium extends ContaBancaria implements Tributavel{
+public class ContaPremium extends ContaCorrente implements Tributavel{
 
     private double bonusAnual;
 
