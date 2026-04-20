@@ -37,4 +37,29 @@ public class ContaPremiumTest {
         assertEquals(2000.0, conta.getLimiteEspecial());
     }
 
+    // teste 2 -------Tributavel - calcularImposto()---------------
+
+    @Test
+    @DisplayName("calcularImposto() deve retornar 0,38% do saldo")
+    void deveCalcularImpostoCorretamente() {
+        // 5000 * 0.0038 = 19.0
+        assertEquals(19.0, conta.calcularImposto(), 0.001);
+    }
+
+
+    @Test
+    @DisplayName("calcularImporto() deve recalcular após depósito")
+    void deveRecalcularImpostoAposDeposito() {
+        conta.depositar(5000); // saldo sobe para 10000
+        assertEquals(38, conta.calcularImposto(), 0.001);
+    }
+
+    @Test
+    @DisplayName("calcularImposto() deve recalcular após Saque")
+    void deveRecalcularAposSaque() {
+        conta.sacar(2500.0);    //saldo ficará em R$ 2500.00
+        assertEquals(9.5, conta.calcularImposto());
+    }
+
+
 }
