@@ -120,5 +120,26 @@ public class ContaPremiumTest {
     }
 
 
+    // --- 5 - Herança de ContaCorrente - cheque especial--------------------------
+
+    @Test
+    @DisplayName("Deve usar cheque especial de R$ 2.000 no saque")
+    void deveUsarChequeEspecialDe2000Saque() {
+        // saldo 5000 + limite 2000 = 7000 disponível
+        conta.sacar(7000);
+        assertEquals(-2000, conta.getSaldo(), 0.001);
+    }
+
+    @Test
+    @DisplayName("Saque acima do limite máximo deve lançar exceção")
+    void saqueAcimaDoLimiteMaximoDeveLancarExcecao() {
+        assertThrows(IllegalStateException.class,
+            () -> conta.sacar(7001.0)
+        );
+    }
+
+    
+
+
 
 }
