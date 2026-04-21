@@ -138,7 +138,12 @@ public class ContaPremiumTest {
         );
     }
 
-    
+    @Test
+    @DisplayName("getTipoConta() deve retornar CONTA PREMIUM")
+    void deveRetornarTipoContaPremium() {
+        assertEquals("CONTA PREMIUM", conta.getTipoConta());
+    }
+
 
 
 
