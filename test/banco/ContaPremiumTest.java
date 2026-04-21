@@ -79,4 +79,46 @@ public class ContaPremiumTest {
     }
 
 
+    // --teste 4 -----creditarBonus-----------
+
+    @Test
+    @DisplayName("creditarBonus() deve aumentar o saldo corretamente")
+    void creditarBonusDeveAumentarSaldo() {
+        conta.creditarBonus(2.0);  // 2% de 5000 = 100
+        assertEquals(5100, conta.getSaldo(), 0.001);
+    }
+
+    @Test
+    @DisplayName("creditarBonus() com 0% não deve ser alterado")
+    void creditarBonusNaoDeveSerAlterado() {
+        conta.creditarBonus(0.0);
+        assertEquals(5000, conta.getSaldo());
+    }
+
+    @Test
+    @DisplayName("creditaBonus() com 0% não deve alterar saldo")
+    void creditarBonusZeroNaoDeveAlterarSaldo() {
+        conta.creditarBonus(0);
+        assertEquals(5000.0, conta.getSaldo());
+    }
+
+    @Test
+    @DisplayName("creditarBonus() deve calcular percentual sobre saldo atual")
+    void creditarBonusDeveUsarSaldoAtual() {
+        conta.depositar(5000.0);    //saldo passa para 10000
+        conta.creditarBonus(1.0);   // 1% de 10000 = 100
+        assertEquals(10100.0, conta.getSaldo(), 0.001);
+    }
+
+    @Test
+    @DisplayName("Bônus acumulados devem crescer sobre saldo atualizado")
+    void bonusAcumuladosDevemCrescerSobreSaldoAtualizado() {
+        conta.creditarBonus(10.0);          //saldo = 5500
+        double saldoApois1Bonus = conta.getSaldo();           //variavel com valor para comparação
+        conta.creditarBonus(10);
+        assertTrue(conta.getSaldo() > saldoApois1Bonus);      //verifica se houve alteração com acumulado
+    }
+
+
+
 }
