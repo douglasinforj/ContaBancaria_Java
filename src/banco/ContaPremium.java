@@ -13,7 +13,7 @@ public class ContaPremium extends ContaCorrente implements Tributavel{     //Ate
     private double bonusAnual;
 
     public ContaPremium(String titulo, double saldoInicial) {
-        super(titulo, saldoInicial);
+        super(titulo, saldoInicial, 2000.0);     //Informando o limite para ContaPremium, herdando de ContaCorrente
         this.bonusAnual = 0;
     }
 

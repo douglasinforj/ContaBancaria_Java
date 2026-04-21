@@ -28,7 +28,7 @@ public class ContaPremiumTest {
     @Test
     @DisplayName("Deve Criar conta com saldo inicial correto")
     void deveCriarContaComSaldoCorreto() {
-        assertEquals("5000.0", conta.getSaldo());
+        assertEquals(5000.0, conta.getSaldo());
     }
 
     @Test
