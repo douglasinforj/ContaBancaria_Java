@@ -26,7 +26,35 @@ import java.util.Optional;
 
 
 
-public class Banco {
+public class Banco {    
+
+    private final String nome;
+    private final List<ContaBancaria> contas;
+
+    //Construtor da Class
+    public Banco(String nome) {
+        this.nome = nome;
+        this.contas = new ArrayList<>();
+    }
+
+    /**
+     *  public void adicionarConta(ContaBancaria conta) - exemplo de injeção de dependência por método (ou Stter injection, se for usado para definir um campo)
+     *  Em vez de criar a ContaBancaria dentro de método usando 'new' recebemos pronta de quem chamou o método, reduzindo acoplamento
+     *  
+     * Pontos chaves:
+     *  - Desacoplamento: A classe que contém o método 'adicionarConta' não precisa saber como criar uma ContaBancaria, apenas usar-la
+     *  - Controle Externo: A responsabilidade de instanciar o objeto ContaBancaria passa para um componente externo (quem chama o método),
+     *    o que é a essência da INVERSÃO DE CONTROLE
+     *  - Em resumo, qualquer forma de passar um objeto necessário para dentro de uma classe, em vez de criá-lo internamente, 
+     *    é considerada INJEÇÃO DE DEPENDÊNCIA.
+     */
+    public void adicionarConta(ContaBancaria conta) {  
+        contas.add(conta);
+        System.out.printf("[BANCO] Conta aberta para %s (%s)%n",
+            conta.getTitular(), conta.getTipoConta()
+         );
+    }
+    
 
     
 }
