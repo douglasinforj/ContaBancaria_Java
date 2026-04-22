@@ -55,13 +55,17 @@ public class Banco {
          );
     }
 
-    public Optional<ContaBancaria> buscarPorNumeroConta(String numero) {  // farei busca pelo titular
+    public Optional<ContaBancaria> buscarPorNumeroConta(String numero) {  // farei busca pelo numero unico
         return contas.stream()
                 .filter(c -> c.getNumeroConta().equals(numero))  // para cada c 'conta' verifica se c.getNumeroConta é igual ao numero informado
-                .findFirst();   //retorna o primeiro elemento encontrado 'retorno é um Optional<ContaBancaria>'
+                .findFirst();   //retorna o primeiro elemento encontrado 'retorno é um Optional<ContaBancaria>' Único.
+    }
+
+    public List<ContaBancaria> buscarPorTitular(String titular) {
+        return contas.stream()
+                .filter(c -> c.getTitular().equalsIgnoreCase(titular))
+                .toList();    //Devolvendo uma lista podendo existir vários 'retorno é uma List<ContaBancaria>'
     }
 
 
-
-    
 }
