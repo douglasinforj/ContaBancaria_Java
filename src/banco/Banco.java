@@ -76,5 +76,11 @@ public class Banco {
         System.out.println();
     }
 
+    public double calcularPatrimonioTotal() {
+        return contas.stream()                         //converte a coleção List em um Stream
+                .mapToDouble(ContaBancaria::getSaldo)  //converte Stream<ContaBancaria> em DoubleStream evita boxing/unboxing (otimiza para primitivo)
+                .sum();                                 //percorre todos os valores somando em double
+
+    }
 
 }
