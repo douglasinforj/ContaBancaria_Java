@@ -54,7 +54,14 @@ public class Banco {
             conta.getTitular(), conta.getTipoConta()
          );
     }
-    
+
+    public Optional<ContaBancaria> buscarPorNumeroConta(String numero) {  // farei busca pelo titular
+        return contas.stream()
+                .filter(c -> c.getNumeroConta().equals(numero))  // para cada c 'conta' verifica se c.getNumeroConta é igual ao numero informado
+                .findFirst();   //retorna o primeiro elemento encontrado 'retorno é um Optional<ContaBancaria>'
+    }
+
+
 
     
 }
