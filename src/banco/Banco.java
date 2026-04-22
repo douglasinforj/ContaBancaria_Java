@@ -63,8 +63,17 @@ public class Banco {
 
     public List<ContaBancaria> buscarPorTitular(String titular) {
         return contas.stream()
-                .filter(c -> c.getTitular().equalsIgnoreCase(titular))
+                .filter(c -> c.getTitular().equalsIgnoreCase(titular))   //compara as strings ignorando maiusculas e minusculas
                 .toList();    //Devolvendo uma lista podendo existir vários 'retorno é uma List<ContaBancaria>'
+    }
+
+
+    public void listarContas() {
+        System.out.println("\n=================================================");
+        System.out.printf("||  BANCO %s -  d% conta(s) cadastrada(s)%n", nome, contas.size());
+        System.out.println("===================================================");
+        contas.forEach(c -> System.out.println(" -" + c));
+        System.out.println();
     }
 
 
