@@ -83,4 +83,8 @@ public class Banco {
 
     }
 
+    //getters
+    public String getName() { return nome;}
+    public List<ContaBancaria> getContas() { return List.copyOf(contas);} // Retorna uma copia imutável da Lista, protegendo o encapsulamento
+
 }
