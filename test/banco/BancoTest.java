@@ -1,6 +1,6 @@
 package banco;
 
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -49,7 +49,31 @@ public class BancoTest {
 
     // Teste 2 -----------AdicionarConta()--------------------
 
-   
+    @Test
+    @DisplayName("Deve adicionar uma conta Corretamente")
+    void deveAdicionarUmaConta() {
+        banco.adicionarConta(cc);
+        assertEquals(1, banco.getContas().size());
+    }
+
+    @Test
+    @DisplayName("Deve adicionar múltiplas contas de tipos diferentes")
+    void deveAdicionarMutiplasContas() {
+        banco.adicionarConta(cc);
+        banco.adicionarConta(cp);
+        banco.adicionarConta(ci);
+        assertEquals(3, banco.getContas().size());
+    }
+
+    @Test
+    @DisplayName("getContas() deve retornar lista imutável de contas")
+    void getContasDeveRetornarListaImutavel() {
+        banco.adicionarConta(cc);                               //adiciono uma conta, ou varias
+        List<ContaBancaria> contas = banco.getContas();         // retornando a lista com getContas ( com copyOf )
+        assertThrows(UnsupportedOperationException.class,       //lança uma exceção, quando se tenta modificar uma coleção imutavel
+            () -> contas.add(cp)                                // teantativa de modificar a lista imutável
+        );
+    }
 
 
 
