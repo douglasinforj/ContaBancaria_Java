@@ -105,7 +105,7 @@ public class BancoTest {
     @Test
     @DisplayName("Deve retornar Multiplas contas do mesmo titular")
     void deveRetornarMultiplasContasDoMesmoTitular() {
-        ContaCorrente cc2 = new ContaCorrente("Alice",500.0)
+        ContaCorrente cc2 = new ContaCorrente("Alice",500.0);
         banco.adicionarConta(cc);
         banco.adicionarConta(cc2);
         List<ContaBancaria> resultado = banco.buscarPorTitular("Alice");
