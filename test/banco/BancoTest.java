@@ -44,7 +44,7 @@ public class BancoTest {
     @Test
     @DisplayName("Banco deve guardar o Nome corretamente")
     void deveGuardarNomeCorretamente () {
-        assertEquals("Test Bank", banco.getName());
+        assertEquals("TestBank", banco.getName());
     }
 
     // Teste 2 -----------AdicionarConta()--------------------
@@ -111,7 +111,7 @@ public class BancoTest {
     void buscarTitularDeveSercaseInsensitive() {
         banco.adicionarConta(cc);
         List<ContaBancaria> resultado = banco.buscarPorTitular("alice");
-        assertEquals("alice", resultado.size());
+        assertEquals(1, resultado.size());
     }
 
     @Test
