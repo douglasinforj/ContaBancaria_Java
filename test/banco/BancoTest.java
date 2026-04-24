@@ -112,6 +112,32 @@ public class BancoTest {
         assertEquals(2, resultado.size());
     }
 
+    // ---5 calcularPatrimonilaTotal()
+
+    @Test
+    @DisplayName("Patrimonio com zero contas deve ser zero")
+    void patrimonioComZeroContasDeveSerZero() {
+        assertEquals(0.0, banco.calcularPatrimonioTotal());
+    }
+
+    @Test
+    @DisplayName("Patrimonio deve somar saldo de todas as contas")
+    void patrimonioDeveSomarTodosOsSaldos() {
+        banco.adicionarConta(cc);    //1000
+        banco.adicionarConta(cp);    //2000
+        banco.adicionarConta(ci);    // 3000
+        assertEquals(6000.0, banco.calcularPatrimonioTotal(), 0.001);
+    }
+
+    @Test
+    @DisplayName("PAtrimonio deve atualizar após operações nas contas")
+    void patrimonioDeveAtualizarAposOperacoes() {
+        banco.adicionarConta(cc);
+        banco.adicionarConta(cp);
+        cc.depositar(500.0);    //passará para 1500
+        assertEquals(3500.0, banco.calcularPatrimonioTotal(), 0.001);
+    }
+
 
 
 
