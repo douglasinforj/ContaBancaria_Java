@@ -75,6 +75,26 @@ public class BancoTest {
         );
     }
 
+    // ---teste 3 buscarPorNumeroConta()---------------
+
+    @Test
+    @DisplayName("Deve encontrar conta pelo número correto")
+    void deveEncontrarContaPeloNumero() {
+        banco.adicionarConta(cc);          //adionando conta
+        Optional<ContaBancaria> resultado = banco.buscarPorNumeroConta(cc.getNumeroConta());  //usando tipo de retorno seguro com optional, metodo de buscar pelo numero da conta, obtendo o numero da conta criada
+        assertTrue(resultado.isPresent());   //tornando seguro o resultado para evitar null
+        assertEquals(cc.getNumeroConta(), resultado.get().getNumeroConta());  // esperado  |  recuperando o resultado | pega o numero encontrado
+    }
+
+    @Test
+    @DisplayName("Deve retornar Optional vazio para número inexistente")
+    void deveRetornarVazioParaNuemroInexistente() {
+        banco.adicionarConta(cc);
+        Optional<ContaBancaria> resultado = banco.buscarPorNumeroConta("00000-0");
+        assertFalse(resultado.isPresent());
+    }
+
+
 
     // -----4. buscarPorTitular() --------------------------------
 
