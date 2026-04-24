@@ -76,6 +76,46 @@ public class BancoTest {
     }
 
 
+    // -----4. buscarPorTitular() --------------------------------
+
+    @Test
+    @DisplayName("Deve encontrar conta pelo nome do titular")
+    void deveEncontrarContaPeloTitular() {
+        banco.adicionarConta(cc);
+        List<ContaBancaria> resultado = banco.buscarPorTitular("Alice");
+        assertEquals(1, resultado.size());
+    }
+
+    @Test
+    @DisplayName("Buscar por titular de ser case-insensitive")
+    void buscarTitularDeveSercaseInsensitive() {
+        banco.adicionarConta(cc);
+        List<ContaBancaria> resultado = banco.buscarPorTitular("alice");
+        assertEquals("alice", resultado.size());
+    }
+
+    @Test
+    @DisplayName("Deve retornar lista vazia para titular inexistente")
+    void deveRetornarVazioParaTitularInexixtente() {
+        banco.adicionarConta(cc);
+        List<ContaBancaria> resultado = banco.buscarPorTitular("Inexistente");
+        assertTrue(resultado.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Deve retornar Multiplas contas do mesmo titular")
+    void deveRetornarMultiplasContasDoMesmoTitular() {
+        ContaCorrente cc2 = new ContaCorrente("Alice",500.0)
+        banco.adicionarConta(cc);
+        banco.adicionarConta(cc2);
+        List<ContaBancaria> resultado = banco.buscarPorTitular("Alice");
+        assertEquals(2, resultado.size());
+    }
+
+
+
+
+
 
 
 }
