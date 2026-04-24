@@ -55,6 +55,13 @@ public class Main{
         cp.aplicarRendimento();   //simulando a virada de mês
         cp.exibirExtrato();
 
+        //5 - Operação na Conta Investimento
+        secao("CONTA INVESTIMENTO - Carol");
+        ci.depositar(2000.0);
+        ci.processarMes();
+        System.out.printf("Projeto 12 meses: R$ %.2f%n", ci.projetarSaldo(12));
+        ci.exibirExtrato();
+
     }
 
     private static void secao(String titulo) {
