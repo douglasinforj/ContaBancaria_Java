@@ -69,8 +69,8 @@ public class Banco {
 
 
     public void listarContas() {
-        System.out.println("\n=================================================");
-        System.out.printf("||  BANCO %s -  d% conta(s) cadastrada(s)%n", nome, contas.size());
+        System.out.println("\n===================================================");
+        System.out.printf("   BANCO %s -  %d conta(s) cadastrada(s)%n", nome, contas.size());
         System.out.println("===================================================");
         contas.forEach(c -> System.out.println(" -" + c));
         System.out.println();
