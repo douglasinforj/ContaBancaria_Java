@@ -83,6 +83,24 @@ public class Main{
                 System.out.printf("  %-20s -> ERRO: %s%n", conta.getTipoConta(), e.getMessage());
             }
         }
+
+        //9 - Tratamento de Exceções
+        secao("TRATAMENTO DE EXCEÇÕES");
+        try{
+            cp.sacar(-50);  //valor inválido para teste
+        }catch(IllegalArgumentException e) {
+            System.out.println("Exceção capturada (negativo): " + e.getMessage());
+        }
+
+        try{
+            cp.sacar(9999999);  //Saldo insuficiente
+        }catch(IllegalStateException e){
+            System.out.println("Exceção capturada (sem saldo): " + e.getMessage());
+        }
+        
+
+
+
     }
 
     private static void secao(String titulo) {
