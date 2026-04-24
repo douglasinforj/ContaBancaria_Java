@@ -62,8 +62,8 @@ public class ContaPoupanca extends ContaBancaria {
     @Override
     public void exibirExtrato() {
         super.exibirExtrato();       //exibi o comportamento do método direto da classe pai
-        System.out.printf(" Taxa de Rendimento: %.1%% a.m.%.", TAXA_RENDIMENTO * 100);
-        System.out.printf(" Saques este mês   : %d%d%n", saquesMensais, LIMITE_SAQUES_MENSAIS);
+        System.out.printf(" Taxa de Rendimento: %.1f%% a.m.%n", TAXA_RENDIMENTO * 100);
+        System.out.printf(" Saques este mês   : %d/%d%n", saquesMensais, LIMITE_SAQUES_MENSAIS);
         System.out.println("========================================================");
     }
 
