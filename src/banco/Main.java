@@ -97,7 +97,17 @@ public class Main{
         }catch(IllegalStateException e){
             System.out.println("Exceção capturada (sem saldo): " + e.getMessage());
         }
-        
+
+        //10 - Busca e Patrimonio
+        secao("BUSCA E PATRIMÔNIO");
+        banco.buscarPorTitular("alice silva").forEach(c -> System.out.println("Encontrado: " + c)
+        );
+        System.out.printf("Patrimônio total do banco: R$ %.2f%n", banco.calcularPatrimonioTotal());
+
+        System.out.println("\n================================================");
+        System.out.println("  FIM DA DEMONSTRAÇÃO");
+        System.out.println("================================================\n");
+
 
 
 
