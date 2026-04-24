@@ -68,6 +68,21 @@ public class Main{
         prm.creditarBonus(2.0);
         System.out.println(prm.descricaoTributo()); //metodo da interface (contrato)
         prm.exibirExtrato();
+
+        //7 - Transferência Entre Contas
+        secao("TRANSFERÊNCIA ENTRE CONTAS");
+        cc.transferir(300.00, cp);
+
+        //8 Polimorfismo - laço com tipo abstrato
+        secao("Sacar R$ 100 em todas as contas");
+        for (ContaBancaria conta : banco.getContas()) {
+            try {
+                conta.sacar(100.0);
+                System.out.printf(" %-20s -> saldo: R$ %.2f%n", conta.getTipoConta(), conta.getSaldo());
+            } catch (IllegalStateException e) {
+                System.out.printf("  %-20s -> ERRO: %s%n", conta.getTipoConta(), e.getMessage());
+            }
+        }
     }
 
     private static void secao(String titulo) {
