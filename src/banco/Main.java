@@ -41,7 +41,26 @@ public class Main{
 
         banco.listarContas();
 
+        //3 - Operações na Conta Corrente
+        secao("CONTA CORRENTE - Alice");
+        cc.depositar(500.0);
+        cc.sacar(200.00);
+        cc.sacar(1900.00);
+        cc.exibirExtrato();
 
+        // 4 - Operação na Poupança
+        secao("CONTA PAUPANÇA - Bob");
+        cp.depositar(1000.0);
+        cp.sacar(500.0);
+        cp.aplicarRendimento();   //simulando a virada de mês
+        cp.exibirExtrato();
+
+    }
+
+    private static void secao(String titulo) {
+        System.out.println("\n-----------------------------------------");
+        System.out.println(" " + titulo);
+        System.out.println("-----------------------------------------");
     }
 
 }
