@@ -62,12 +62,18 @@ public class Main{
         System.out.printf("Projeto 12 meses: R$ %.2f%n", ci.projetarSaldo(12));
         ci.exibirExtrato();
 
+        //6 - Conta Premium + Interface Tributável
+        secao("CONTA PREMIUM - Daniel");
+        prm.depositar(3000.0);
+        prm.creditarBonus(2.0);
+        System.out.println(prm.descricaoTributo()); //metodo da interface (contrato)
+        prm.exibirExtrato();
     }
 
     private static void secao(String titulo) {
-        System.out.println("\n-----------------------------------------");
+        System.out.println("\n=========================================");
         System.out.println(" " + titulo);
-        System.out.println("-----------------------------------------");
+        System.out.println("========================================");
     }
 
 }

@@ -43,10 +43,10 @@ public class ContaPremium extends ContaCorrente implements Tributavel{     //Ate
     @Override
     public void exibirExtrato(){
         super.exibirExtrato();    //Herdado os dados de Conta Corrente(Atenção)
-        System.out.println("============Dados Premium");
+        System.out.println("============Dados Premium=================");
         System.out.println("  " + descricaoTributo());        //interface Tributavel
         System.out.printf("  Último bônus:    + R$ %.2f%n", bonusAnual);
-        System.out.println("===============================================");
+        System.out.println("============================================");
     }
 
 
