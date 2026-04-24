@@ -64,7 +64,7 @@ public class ContaCorrente  extends ContaBancaria{
     @Override
     public void exibirExtrato(){  //Metodo vindo por herança do pai,
         super.exibirExtrato();    //Chamando os comportamento na classe pai
-        System.out.printf(" Limite Especial: ", limiteEspecial);   //Adicionando limiteEspcial que é especifica desta classe.
+        System.out.printf(" Limite Especial: R$ %.2f%n ", limiteEspecial);   //Adicionando limiteEspcial que é especifica desta classe.
     }
 
     //Getters e Setters
