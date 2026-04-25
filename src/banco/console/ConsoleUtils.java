@@ -84,7 +84,7 @@ public class ConsoleUtils {
     /* Limpa a tela (obs. funciona no terminal real, não no terminal do VS Code) */
     public static void limparTela() {
         System.out.print("\033[H\033[2J");
-        System.out.flush();
+        System.out.flush();                      //Descarrega o buffer de imediato
     }
 
 }
