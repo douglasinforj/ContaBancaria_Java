@@ -33,5 +33,24 @@ public class ConsoleUtils {
         }
     }
 
-    
+    /* Lê double com Mensagem. Repete até o valor válido e positivo */
+    public static double lerDouble(String mensagem){
+        while (true) {
+            try{
+                System.out.print(mensagem);
+                String entrada = scanner.nextLine().replace(",", "."); //aceita tanto o ponto quanto a virgula
+                double valor = Double.parseDouble(entrada);                                 //garante a conversão
+                if(valor < 0){
+                    System.out.println("Digite um valor positivo.");
+                    continue;
+                }
+                return valor;
+            }catch(NumberFormatException e){
+                System.out.println("Valorinválido. Use números (ex: 150.00 ou 150.0)");
+
+            }
+        }
+    }
+
+
 }
