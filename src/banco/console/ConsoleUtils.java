@@ -57,6 +57,21 @@ public class ConsoleUtils {
         while (true){
             System.out.print(mensagem);
             String texto = scanner.nextLine().trim();   //Trim remove espaços em branco no inicio e no fim
+            if (!texto.isBlank()){                      //Se não ! estiver em branco retorna o texto
+                return texto;
+            }
+            System.out.println(" Campo obrigatório. Digite um valor.");
+        }
+    }
+
+    /* Lê confirmação S/N do usuário, booleano*/
+    public static boolean lerConfirmacao(String mensagem) {
+        while (true) {
+            System.out.print(mensagem + " (S/N) ");
+            String resposta = scanner.nextLine().trim().toUpperCase();
+            if (resposta.equals("S")) return true;
+            if (resposta.equals("N")) return false;
+            System.out.println("Digite S para sim ou N para não.");
         }
     }
 
