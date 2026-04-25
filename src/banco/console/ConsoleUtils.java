@@ -75,5 +75,16 @@ public class ConsoleUtils {
         }
     }
 
+    /* Pausa e espera o usuário pressionar "Enter" para continuar */
+    public static void pausar() {
+        System.out.print("\n Pressione Enter para continuar....");
+        scanner.nextLine();
+    }
+
+    /* Limpa a tela (obs. funciona no terminal real, não no terminal do VS Code) */
+    public static void limparTela() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 
 }
