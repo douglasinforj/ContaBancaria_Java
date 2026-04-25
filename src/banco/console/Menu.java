@@ -33,6 +33,24 @@ public class Menu {
         System.out.println("0. Voltar");
     }
 
+    public static void menuOperacoes(String titular, String tipoConta){
+        System.out.println("=====================================");
+        System.out.printf("||%-33s||%n", titular);
+        System.out.printf("||%-33s||%n", tipoConta);
+        System.out.println("||   1. Depositar                  ||");
+        System.out.println("||   2. Sacar                      ||");
+        System.out.println("||   3. Transferir                 ||");
+        System.out.println("||   4. Ver extrato completo       ||");
+        System.out.println("||   5. Operações especiais        ||");
+        System.out.println("||   6. Consultar dados da conta   ||");
+        System.out.println("||   7. Alterar titular            ||");
+        System.out.println("||   0. Voltar ao menu principal   ||");
+        System.out.println("=====================================");
+
+
+
+    }
+
 
 
 }
