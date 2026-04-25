@@ -52,5 +52,13 @@ public class ConsoleUtils {
         }
     }
 
+    /* Lê uma String não vazia com mensagem (campo Obrigatório) */
+    public static String lerTexto(String mensagem){
+        while (true){
+            System.out.print(mensagem);
+            String texto = scanner.nextLine().trim();   //Trim remove espaços em branco no inicio e no fim
+        }
+    }
+
 
 }
