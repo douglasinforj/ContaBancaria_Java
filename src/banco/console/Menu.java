@@ -46,10 +46,21 @@ public class Menu {
         System.out.println("||   7. Alterar titular            ||");
         System.out.println("||   0. Voltar ao menu principal   ||");
         System.out.println("=====================================");
-
-
-
     }
+
+    public static void menuOperacoesEspeciais(String tipoConta){
+        System.out.println("\n Operações especiais - " + tipoConta);
+        System.out.println(" 1. Ver operações disponíveis");
+        System.out.println(" 0. Voltar");
+    }
+
+    public static void cabecalho(String titulo){
+        System.out.println("\n--------------------------------");
+        System.out.println("  " + titulo);
+        System.out.println("----------------------------------");
+    }
+
+
 
 
 
