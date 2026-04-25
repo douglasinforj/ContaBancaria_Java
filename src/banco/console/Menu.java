@@ -10,7 +10,11 @@ package banco.console;
 
 public class Menu {
 
-    private Menu();
+    /**
+     * Construtor privado: Em resumo é uma tecnica de encapsulamento para proteger 
+     * o estado interno e restringir o acesso a criação de objetos. Evita ser instanciadas fora da classe
+    */
+    private Menu() {}
 
     public static void menuPrincipal() {
         System.out.println("\n=======================================");
@@ -59,9 +63,6 @@ public class Menu {
         System.out.println("  " + titulo);
         System.out.println("----------------------------------");
     }
-
-
-
 
 
 }
