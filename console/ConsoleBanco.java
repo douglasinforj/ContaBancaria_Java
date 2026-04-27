@@ -86,5 +86,15 @@ public class ConsoleBanco {
     }
 
 
+    //Opções de abertura de Contas
 
+    private ContaCorrente criarContaCorrente(String titular, double saldo) {
+        System.out.printf(" Limite especial padrao: R$ 500,00%n");
+        boolean custom = ConsoleUtils.lerConfirmacao("Deseja definir um limite personalizado?");
+        if (custom) {
+            double limite = ConsoleUtils.lerDouble(" Limite especial (R$): ");
+            return new ContaCorrente(titular, saldo, limite);
+        }
+        return new ContaCorrente(titular, saldo);
+    }
 }
