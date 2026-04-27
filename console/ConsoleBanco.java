@@ -149,4 +149,32 @@ public class ConsoleBanco {
         return resultado.get();
     }
 
+    private ContaBancaria buscarPorTitular() {
+        String nome = ConsoleUtils.lerTexto("Nome do Titular");
+        List<ContaBancaria> contas = banco.buscarPorTitular(nome);
+
+        if (contas.isEmpty()){
+            System.out.println("\n Nenhuma conta encontrada para: " + nome);
+            ConsoleUtils.pausar();
+        }
+
+        if (contas.size() == 1) return contas.get(0);
+
+        System.out.println("\n " + contas.size() + " contas encontradas: ");
+        for (int i = 0; i < contas.size(); ++i) {
+            System.out.printf(" %d. [%-18s] Conta: %-9s | Saldo: R$ %.2f%n",
+                i + 1,
+                contas.get(i).getTipoConta(),
+                contas.get(i).getNumeroConta(),
+                contas.get(i).getSaldo());
+        }
+        //Escolha de contas caso tenha mais de uma
+        int escolha = ConsoleUtils.lerInt("Qual conta deseja acessar? ");
+        if (escolha < 1 || escolha > contas.size()){
+            System.out.println("\n Opcao invalida.");
+            return null;
+        }
+        return contas.get(escolha - 1);
+    }
+
 }
