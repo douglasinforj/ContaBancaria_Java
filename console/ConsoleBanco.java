@@ -37,6 +37,7 @@ public class ConsoleBanco {
             opcao = ConsoleUtils.lerInt("  Escolha: ");
             switch (opcao) {
                 case 1 -> abrirConta();
+                case 2 -> acessarConta();
                 
                 case 0 -> System.out.println("\n  Até logo!");
                 default -> System.out.println("\n Opção inválida.");
@@ -51,7 +52,7 @@ public class ConsoleBanco {
     private void abrirConta() {
         Menu.cabecalho("ABRIR NOVA CONTA");
         Menu.menuTipoConta();
-        int tipo = ConsoleUtils.lerInt("  Tipo:");
+        int tipo = ConsoleUtils.lerInt(" Tipo:");
         if (tipo == 0) return;
 
         String titular = ConsoleUtils.lerTexto("Nome do Titular  :");
@@ -116,4 +117,25 @@ public class ConsoleBanco {
         double taxa = ConsoleUtils.lerDouble("Taxa de administracao (%): ");
         return new ContaInvestimento(titular, saldo, taxa, rent);
     }
+
+
+    //===================================================
+    // 2. Acessar Conta
+    //===================================================
+
+    private void acessarConta() {
+        Menu.cabecalho("ACESSAR CONTA");
+        System.out.println("  1. Buscar por numero da conta");
+        System.out.println("  2. Buscar por nome do titular");
+        System.out.println("  0. Voltar");
+        int opcao = ConsoleUtils.lerInt("Escolha: ");
+
+        ContaBancaria conta = switch (opcao) {
+            case 1 -> buscarPorNumero();
+            case 2 -> buscarPorTitular();
+            default -> null;
+        };
+        if (conta != null) menuOperacoes(conta);
+    }
+
 }
