@@ -178,4 +178,48 @@ public class ConsoleBanco {
         return contas.get(escolha - 1);
     }
 
+    // =====================================================
+    // Menu de Operações da Conta
+    // =====================================================
+
+    private void menuOperacoes(ContaBancaria conta) {
+        int opcao;
+        do {
+            Menu.menuOperacoes(conta.getTitular(), conta.getTipoConta());
+            opcao = ConsoleUtils.lerInt("  Escolha: ");
+            switch (opcao) {
+               case 1 -> depositar(conta);
+               // case 2 -> sacar(conta);
+               // case 3 -> transferir(conta);
+               // case 4 -> extrato(conta);
+               // case 5 -> operacoesEspeciais(conta);
+                //case 6 -> consultarDados(conta);
+                //case 7 -> alterarTitular(conta);
+                case 0 -> {}
+                default -> System.out.println("\n  Opcao invalida.");
+            }
+            if (opcao != 0) ConsoleUtils.pausar();
+        } while (opcao != 0);
+    }
+
+
+    //===========================================================
+    // Operações Basicas
+    //===========================================================
+
+    private void depositar(ContaBancaria conta) {
+        Menu.cabecalho("DEPOSITO - " + conta.getTitular());
+        System.out.printf(" Saldo atual: R$ %.2f%n", conta.getSaldo());
+        double valor = ConsoleUtils.lerDouble(" Valor a depositar (R$): ");
+
+        try {
+            conta.depositar(valor);
+            System.out.println("\n Deposito realizado");
+            System.out.printf(" Valor depositado : R$ %.2f%n", valor);
+            System.out.printf(" Novo saldo       : R$ %.2f%n", conta.getSaldo());
+        }catch( IllegalArgumentException e) {
+            System.out.println("\n Erro: " + e.getMessage());
+        }
+
+    }
 }
