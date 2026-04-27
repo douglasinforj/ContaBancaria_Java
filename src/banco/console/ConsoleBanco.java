@@ -189,7 +189,7 @@ public class ConsoleBanco {
             opcao = ConsoleUtils.lerInt("  Escolha: ");
             switch (opcao) {
                case 1 -> depositar(conta);
-               // case 2 -> sacar(conta);
+               case 2 -> sacar(conta);
                // case 3 -> transferir(conta);
                // case 4 -> extrato(conta);
                // case 5 -> operacoesEspeciais(conta);
@@ -256,6 +256,27 @@ public class ConsoleBanco {
             }
         } catch (IllegalArgumentException | IllegalStateException e){
             System.out.println("\n Erro: " + e.getMessage());
+        }
+    }
+
+
+
+
+
+
+
+
+    //==================================================
+    // HELPERS
+    //==================================================
+
+    private void exibirSaldoDisponivel(ContaBancaria conta){
+        if(conta instanceof ContaCorrente cc){
+            System.out.printf("Saldo em conta: R$ %.2f%n", cc.getSaldo());
+            System.out.printf("Limite Especial: R$ %.2f%n", cc.getLimiteEspecial());
+            System.out.printf("Total disponivel: R$ %.2f%n, R$ %.2f%n", cc.getSaldo(), cc.getLimiteEspecial());
+        }else{
+            System.out.printf("Saldo disponível: R$ %.2f%n", conta.getSaldo());
         }
     }
 
