@@ -220,8 +220,44 @@ public class ConsoleBanco {
         }catch( IllegalArgumentException e) {
             System.out.println("\n Erro: " + e.getMessage());
         }
-
-        
-
     }
+
+    private void sacar(ContaBancaria conta) {
+        Menu.cabecalho("SAQUE - " + conta.getTitular());
+        exibirSaldoDisponivel(conta);
+
+        // Aviso de poupança proxima do limite de saques
+        if (conta instanceof ContaPoupanca cp) {
+            int restantes = 4 - cp.getSaquesMensais();
+            if ( restantes <=2) {
+                System.out.printf(" ATENCAO: apensa %d saque(s) restante(s) neste mes!%n", restantes);
+            }
+        }
+
+        double valor = ConsoleUtils.lerDouble("\n Valor a sacar (R$): ");
+
+        boolean confirmar = ConsoleUtils.lerConfirmacao(
+            String.format(" Confirma saque de R$ %.2f?", valor));
+        if(!confirmar) {
+            System.out.println("  Saque cancelado.");
+            return;
+        }
+        try {
+            double saldoAntes = conta.getSaldo();
+            conta.sacar(valor);
+            System.out.println("\n Saque realizado!");
+            System.out.printf("Valor sacado: R$ %.2f%n", valor);
+            System.out.printf("Saldo anterior: R$ %.2f%n", saldoAntes);
+            System.out.printf("Novo Saldo R$: ", conta.getSaldo());
+
+            // Aviso de cheque especial ativado
+            if (conta instanceof ContaCorrente && conta.getSaldo() < 0){
+                System.out.printf("  Aviso: Cheque especial ativo! Usando R$ %.2f do limite. n%", Math.abs(conta.getSaldo()));
+            }
+        } catch (IllegalArgumentException | IllegalStateException e){
+            System.out.println("\n Erro: " + e.getMessage());
+        }
+    }
+
+
 }
