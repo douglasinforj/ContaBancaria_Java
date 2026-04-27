@@ -54,8 +54,8 @@ public class ConsoleBanco {
         int tipo = ConsoleUtils.lerInt("  Tipo:");
         if (tipo == 0) return;
 
-        String titular = ConsoleUtils.lerTexto(" Nome do Titular  :");
-        double saldoInicial = ConsoleUtils.lerDouble("  Saldo inicial (R$): ");
+        String titular = ConsoleUtils.lerTexto("Nome do Titular  :");
+        double saldoInicial = ConsoleUtils.lerDouble("Saldo inicial (R$): ");
 
         try {
             ContaBancaria novaConta = switch (tipo) {
@@ -73,7 +73,7 @@ public class ConsoleBanco {
 
             banco.adicionarConta(novaConta);
             System.out.println("\n Conta aberta com sucesso!");
-            System.out.println(" Tipo: " + novaConta.getTipoConta());
+            System.out.println("Tipo: " + novaConta.getTipoConta());
             System.out.println("Titular: " + novaConta.getTitular());
             System.out.println("Agência: " + novaConta.getAgencia());
             System.out.println("Conta: " + novaConta.getNumeroConta());
@@ -99,14 +99,21 @@ public class ConsoleBanco {
     }
 
     private ContaPremium criarContaPremium(String titular, double saldo) {
-        System.out.printf(" Limite especial padrao: R$ 2.000,00%n");
-        boolean custom = ConsoleUtils.lerConfirmacao(" Deseja definir um limite personalizado?");
+        System.out.printf("Limite especial padrao: R$ 2.000,00%n");
+        boolean custom = ConsoleUtils.lerConfirmacao("Deseja definir um limite personalizado?");
         ContaPremium premium = new ContaPremium(titular, saldo);
         if (custom) {
-            double limite = ConsoleUtils.lerDouble(" Limite especial (R$): ");
+            double limite = ConsoleUtils.lerDouble("Limite especial (R$): ");
             premium.setLimiteEspecial(limite);
         }
         return premium;
 
+    }
+
+    private ContaInvestimento criarContaInvestimento(String titular, double saldo) {
+        System.out.println(" [Sugestao] Rentabilidade: 12% a.a | Taxa adm: 1,5% a.a");
+        double rent = ConsoleUtils.lerDouble("Rentabilidade anual (%): ");
+        double taxa = ConsoleUtils.lerDouble("Taxa de administracao (%): ");
+        return new ContaInvestimento(titular, saldo, taxa, rent);
     }
 }
