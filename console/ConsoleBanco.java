@@ -138,4 +138,15 @@ public class ConsoleBanco {
         if (conta != null) menuOperacoes(conta);
     }
 
+    private ContaBancaria buscarPorNumero() {
+        String numero = ConsoleUtils.lerTexto("NUmero da conat: ");
+        Optional<ContaBancaria> resultado = banco.buscarPorNumeroConta(numero);
+        if (resultado.isEmpty()) {
+            System.out.println("\n Conta não encontrada");
+            ConsoleUtils.pausar();
+            return null;
+        }
+        return resultado.get();
+    }
+
 }
