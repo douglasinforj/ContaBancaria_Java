@@ -59,7 +59,7 @@ public class Menu {
     }
 
     public static void cabecalho(String titulo){
-        System.out.println("\n--------------------------------");
+        System.out.println("\n----------------------------------");
         System.out.println("  " + titulo);
         System.out.println("----------------------------------");
     }
