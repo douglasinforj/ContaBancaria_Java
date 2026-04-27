@@ -97,4 +97,16 @@ public class ConsoleBanco {
         }
         return new ContaCorrente(titular, saldo);
     }
+
+    private ContaPremium criarContaPremium(String titular, double saldo) {
+        System.out.printf(" Limite especial padrao: R$ 2.000,00%n");
+        boolean custom = ConsoleUtils.lerConfirmacao(" Deseja definir um limite personalizado?");
+        ContaPremium premium = new ContaPremium(titular, saldo);
+        if (custom) {
+            double limite = ConsoleUtils.lerDouble(" Limite especial (R$): ");
+            premium.setLimiteEspecial(limite);
+        }
+        return premium;
+
+    }
 }
